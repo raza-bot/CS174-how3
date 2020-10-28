@@ -1,7 +1,7 @@
 <?php 
-
+include('config.php'); 
 //create connection
-$conn = mysqli_connect('localhost', 'root', 'root'); 
+$conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password); 
 if (!$conn) {
 	die('Connection failed: ' . mysqli_connect_error()); 
 }
