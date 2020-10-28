@@ -1,0 +1,59 @@
+<?php
+
+function landingView($data)
+{
+
+
+}
+
+function genreView($data)
+{
+
+
+}
+
+
+function addgenreView($data)
+{
+  ?>
+  <h1 style="font-size:20pt;"><a href="index.php">Movie Reviews</a></h1>
+  <h2>Add Genre</h2>
+  <form method="get">
+    <div>
+      <input type="text" name="name" placeholder="Genre name" />
+      <input type="submit" name="add" value="Add">
+    </div>
+  </form>
+  <?php
+}
+
+function addreviewView($data)
+{
+  ?>
+  <h1>
+    <a href="index.php">Movie Review</a>
+    "/"
+    <a href=".">Horror</a>
+    <h2>Add Review</h2>
+
+    <form class="addreview" method="post">
+      <div>
+        <label for="title">Title: </label>
+        <input type="text" id="title" name="title" />
+        <label for="enter-review">Review</label></div>
+        <textarea name="review" value=""
+        style="width:2.5in;height:1in;" rows="3" cols="50">
+      </textarea>
+      <input type="submit" name="save" value="Save">
+    </div>
+  </form>
+  <?php
+}
+
+function displayView($data){
+  ?>
+  <h1><a href="index.php">Bookmark Manager</a>
+  <h2>Review: <?=$data['TITLE'] ?> </h2>
+  <h2>review: <?=$entries[$data['TITLE']] ?></h2>
+<?php
+}
