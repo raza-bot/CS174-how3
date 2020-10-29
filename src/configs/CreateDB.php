@@ -26,6 +26,7 @@ $qt2 = 'CREATE TABLE reviews(
 genreid INT(5), 
 title VARCHAR(50), 
 review VARCHAR(200), 
+rdate DATE,
 FOREIGN KEY(genreid) REFERENCES genre(id))'; 
 
 //query database
