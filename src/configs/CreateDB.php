@@ -20,7 +20,7 @@ mysqli_select_db( $conn, 'movie_reviews');
 //create tables
 $qt1 = 'CREATE TABLE genre(
 id INT(5) AUTO_INCREMENT PRIMARY KEY,
-genrename VARCHAR(30) NOT NULL)'; 
+genrename VARCHAR(30)  UNIQUE NOT NULL )'; 
 
 $qt2 = 'CREATE TABLE reviews(
 genreid INT(5), 
