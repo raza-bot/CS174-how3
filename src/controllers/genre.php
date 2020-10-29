@@ -3,4 +3,4 @@
   $genre = $_REQUEST['genre']; 
 
   $call_db = new manageDB(); 
-  $call_db->insert($genre); 
+  $call_db->insertData($genre); 
