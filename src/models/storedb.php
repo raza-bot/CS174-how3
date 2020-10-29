@@ -22,10 +22,13 @@ class manageDB {
       
       $sql = 'SELECT genrename FROM genre ORDER BY genrename'; 
       $result = mysqli_query($conn, $sql); 
+      $genres = array(); 
       while($row = mysqli_fetch_assoc($result)) 
       {
-      echo "id: " . $row["genrename"] . "<br>";
+        $genres[]=$row;
+        echo "id: " . $row["genrename"] . "<br>";
       }
+      print_r($genres); 
   } 
 }
 // echo $_REQUEST['genre']; 
