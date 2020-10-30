@@ -23,11 +23,11 @@ id INT(5) AUTO_INCREMENT PRIMARY KEY,
 genrename VARCHAR(30)  UNIQUE NOT NULL )'; 
 
 $qt2 = 'CREATE TABLE reviews(
-genreid INT(5), 
+id INT(5), 
 title VARCHAR(50), 
 review VARCHAR(200), 
 rdate DATE,
-FOREIGN KEY(genreid) REFERENCES genre(id))'; 
+FOREIGN KEY(id) REFERENCES genre(id))'; 
 
 //query database
 $genre = mysqli_query($conn, $qt1); 

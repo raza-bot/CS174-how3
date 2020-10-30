@@ -13,13 +13,17 @@ function render($gArray, $rArray)
       <body>
         <h1><a href ="../views/landingView.php">Movie Reviews</a></h1>
         <br />
+        <ul>
+          <li>[<a href='../views/genreForm.html'>New Genres</a>]</li>
+        </ul>
+        
         <table class="left">
           <tr>
             <th>Genres</th>
           </tr>
           <?php foreach($gArray as $genres) {?>
             <tr>
-              <td>&#8226; <?php echo($genres); ?></td>
+              <td><a href="../views/landingView.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a><td>
             </tr>
         <?php  } ?>
         </table>
