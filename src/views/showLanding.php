@@ -7,4 +7,3 @@ $call_view = new landingView();
 $call_db = new manageDB();
 $gArray = $call_db->fetchGenres();
 $call_view->render($gArray,$gArray);
- ?>

@@ -1,6 +1,7 @@
 <?php
-include('../configs/config.php');
-include('../../index.php');
+$path = $_SERVER['DOCUMENT_ROOT'];
+include_once($path.'/CS174-hw3/src/configs/config.php');
+
 
 class manageDB {
   function insertGenre($genre) {
@@ -10,7 +11,7 @@ class manageDB {
 
     if (mysqli_query($conn, $sql)) {
       // header('location: ../views/genreForm.html');
-      echo "This is db";
+      //echo "This is db";
       //fetch genres from
     }else {
       echo 'Error: ' . mysqli_error($conn);
@@ -31,19 +32,19 @@ class manageDB {
 
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-    $sql1 = "SELECT id FROM genre WHERE genrename='Action'"; 
+    $sql1 = "SELECT id FROM genre WHERE genrename='Action'";
 
     $result = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_assoc($result);
-    
+
       // while($row = mysqli_fetch_assoc($result))
       // {
-        // echo "id is: " . $row['id'] . "  "; 
+        // echo "id is: " . $row['id'] . "  ";
       // }
-      $id = $row['id']; 
-      echo $id; 
+      $id = $row['id'];
+      echo $id;
 
-    $sql = "INSERT INTO reviews VALUES($id,'$title', '$review', '$date')"; 
+    $sql = "INSERT INTO reviews VALUES($id,'$title', '$review', '$date')";
 
     if (mysqli_query($conn, $sql)) {
       // header('location: ../views/genreForm.html');

@@ -3,6 +3,7 @@ class landingView {
 
 function render($gArray, $rArray)
 {
+
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -11,7 +12,7 @@ function render($gArray, $rArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="../views/landingView.php">Movie Reviews</a></h1>
+        <h1><a href ="../views/showLanding.php">Movie Reviews</a></h1>
         <br />
 
         <table class="left">
