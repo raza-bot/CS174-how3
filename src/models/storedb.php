@@ -31,15 +31,13 @@ class manageDB {
 
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-    $sql1 = "SELECT id FROM genre WHERE genrename='Action'"; 
+
+    
+  $sql1 = "SELECT id FROM genre WHERE genrename='{$genres}'"; 
 
     $result = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_assoc($result);
-    
-      // while($row = mysqli_fetch_assoc($result))
-      // {
-        // echo "id is: " . $row['id'] . "  "; 
-      // }
+   
       $id = $row['id']; 
       echo $id; 
 
@@ -54,4 +52,4 @@ class manageDB {
     }
   }
 }
-// echo $_REQUEST['genre'];
+

@@ -23,7 +23,7 @@ function render($gArray, $rArray)
           </tr>
           <?php foreach($gArray as $genres) {?>
             <tr>
-              <td><a href="../views/landingView.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a><td>
+              <td><a href="../controllers/genrePage.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a><td>
             </tr>
         <?php  } ?>
         </table>

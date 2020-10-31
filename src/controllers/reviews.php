@@ -1,10 +1,12 @@
 <?php
   include('../models/storedb.php');
+  include('genrePage.php'); 
   // include('../views/landingView.php');
   $title = $_REQUEST['title'];
   $review = $_REQUEST['review']; 
   $date = date('yy-m-d'); 
-  $genre = 'Action'; 
+  $genres = 'Action'; 
+  
   
   // $_REQUEST['genres']; 
 
