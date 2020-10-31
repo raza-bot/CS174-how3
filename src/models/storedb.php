@@ -90,4 +90,19 @@ class manageDB {
       }
       return $dArray;
   }
+
+   function fetchReviews() {
+      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      
+      $rvArray = array();
+      $sql = 'SELECT review FROM reviews ORDER BY rdate';
+      $result = mysqli_query($conn, $sql);
+      while($row = mysqli_fetch_assoc($result))
+      {
+      $rvArray[] = $row['review'];
+      }
+      return $rvArray;
+  }
+
+
 }

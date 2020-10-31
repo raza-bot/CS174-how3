@@ -1,7 +1,7 @@
 <?php
 class genreView {
 
-function render($gArray, $rArray,$dArray, $genre)
+function render($gArray, $rArray,$dArray, $genre, $rvArray)
 {
     ?>
     <!DOCTYPE html>
@@ -33,7 +33,7 @@ function render($gArray, $rArray,$dArray, $genre)
           </tr>
           <?php foreach($rArray as $i => $title) {?>
             <tr>
-              <td class="left">&#8226; <?=$title ?></a><td>
+              <td class="left"><a href='page.php?title=<?=urldecode($title)?>&review=<?=urldecode($rvArray[$i])?>'>&#8226; <?=$title ?></a><td>
               <td class="left date"><?=$dArray[$i] ?></td>
             </tr>
             <?php  } ?>
