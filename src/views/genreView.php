@@ -29,11 +29,11 @@ function render($gArray, $rArray,$dArray, $genre)
             <th>Reviews</th>
           </tr>
           <tr>
-            <td><a href='../views/reviewsForm.html?&genres=<?=urldecode($genre)?>'>&#8226; [New Review]</a></td>
+            <td><a href='?&edit=<?=urldecode($genre)?>'>&#8226; [New Review]</a></td>
           </tr>
-          <?php foreach($rArray as $i => $reviews) {?>
+          <?php foreach($rArray as $i => $title) {?>
             <tr>
-              <td class="left">&#8226; <?=$reviews ?></a><td>
+              <td class="left">&#8226; <?=$title ?></a><td>
               <td class="left date"><?=$dArray[$i] ?></td>
             </tr>
             <?php  } ?>
