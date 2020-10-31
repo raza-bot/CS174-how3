@@ -2,11 +2,11 @@
   $path = $_SERVER['DOCUMENT_ROOT'];
   include_once($path.'/CS174-hw3/src/models/storedb.php');
   include_once($path.'/CS174-hw3/src/views/landingView.php');
-  include('genrePage.php'); 
+  include_once('genrePage.php'); 
 
   $getGenre = new Genre(); 
-
   $selectedGenre = $getGenre.getGenre(); 
+
   $title = $_REQUEST['title'];
   $review = $_REQUEST['review'];
   $date = date('yy-m-d');
