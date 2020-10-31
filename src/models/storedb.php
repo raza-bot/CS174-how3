@@ -20,6 +20,7 @@ class manageDB {
 
   function fetchGenres() {
       $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      
       $gArray = array();
       $sql = 'SELECT genrename FROM genre ORDER BY genrename';
       $result = mysqli_query($conn, $sql);
@@ -48,9 +49,9 @@ class manageDB {
     }
   }
 
-  function insertReview($genres, $title, $review, $date) {
+  function insertReview($genre, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-    $sql1 = "SELECT id FROM genre WHERE genrename='$genres'";
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genre'";
 
     $result = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_assoc($result);

@@ -11,3 +11,9 @@ $gArray = $call_db->fetchGenres();
 $rArray = $call_db->fetchReviewsTitle();
 $dArray = $call_db->fetchReviewsDate();
 $call_gview ->render($gArray, $rArray,$dArray,$genre);
+
+class Genre {
+  function getGenre() {
+    return $genre; 
+  }
+}

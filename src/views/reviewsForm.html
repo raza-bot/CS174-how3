@@ -1,10 +1,4 @@
-<?php 
 
-class reviewForm {
-
-  function render() {
-    $genre = $_REQUEST['genres']; 
-    ?>
     <!DOCTYPE html>
     <html>
       <head>
@@ -18,11 +12,9 @@ class reviewForm {
           <input type="text" id='title' name='title' /><br/>
           <label for='review'>Revew</label><br/>
           <textarea  cols="35" rows="20"  type="text" id='review' name='review'></textarea><br/>
-          <input type='hidden' value='{$genres}' id='genres' name='genres' />
           <button style="margin-left: 100px;" >Save</button>
       </body>
     </html>
-    <?php
-  }
-}
+
+
 
