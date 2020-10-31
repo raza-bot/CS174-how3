@@ -6,7 +6,7 @@
   $title = $_REQUEST['title'];
   $review = $_REQUEST['review'];
   $date = date('yy-m-d');
-  $genres = 'Action';
+  $genres = $_REQUEST['genres'];
 
   // $_REQUEST['genres'];
 
