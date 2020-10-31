@@ -1,6 +1,7 @@
 <?php
-include('../configs/config.php');
-include('../../index.php');
+$path = $_SERVER['DOCUMENT_ROOT'];
+include_once($path.'/CS174-hw3/src/configs/config.php');
+
 
 class manageDB {
   function insertGenre($genre) {
@@ -10,7 +11,7 @@ class manageDB {
 
     if (mysqli_query($conn, $sql)) {
       // header('location: ../views/genreForm.html');
-      echo "This is db";
+      //echo "This is db";
       //fetch genres from
     }else {
       echo 'Error: ' . mysqli_error($conn);
@@ -31,6 +32,7 @@ class manageDB {
 
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+<<<<<<< HEAD
 
     
   $sql1 = "SELECT id FROM genre WHERE genrename='{$genres}'"; 
@@ -40,16 +42,46 @@ class manageDB {
    
       $id = $row['id']; 
       echo $id; 
+=======
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genres'";
 
-    $sql = "INSERT INTO reviews VALUES($id,'$title', '$review', '$date')"; 
+    $result = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_assoc($result);
+>>>>>>> 38259891edacff2d6fd22754c79e3a2004949372
+
+      $id = $row['id'];
+
+    $sql = "INSERT INTO reviews VALUES($id,'$title', '$review', '$date')";
 
     if (mysqli_query($conn, $sql)) {
       // header('location: ../views/genreForm.html');
-      echo "Added to reivew";
       //fetch genres from
     }else {
       echo 'Error: ' . mysqli_error($conn);
     }
+  }
+
+  function fetchReviewsTitle() {
+      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      $rArray = array();
+      $sql = 'SELECT title , rdate FROM reviews ORDER BY rdate DESC';
+      $result = mysqli_query($conn, $sql);
+      while($row = mysqli_fetch_assoc($result))
+      {
+      $rArray[] = $row['title'];
+      }
+      return $rArray;
+  }
+  function fetchReviewsDate() {
+      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      $dArray = array();
+      $sql = 'SELECT rdate FROM reviews ORDER BY rdate';
+      $result = mysqli_query($conn, $sql);
+      while($row = mysqli_fetch_assoc($result))
+      {
+      $dArray[] = $row['rdate'];
+      }
+      return $dArray;
   }
 }
 

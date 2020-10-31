@@ -9,4 +9,3 @@ $gArray = $call_db->fetchGenres();
 $rArray = $call_db->fetchReviewsTitle();
 $dArray = $call_db->fetchReviewsDate();
 $call_view ->  render($gArray, $rArray,$dArray);
- ?>
