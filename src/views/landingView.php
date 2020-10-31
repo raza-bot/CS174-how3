@@ -24,7 +24,9 @@ function render($gArray, $rArray,$dArray)
           </tr>
           <?php foreach($gArray as $genres) {?>
             <tr>
-              <td><a href="../views/landingView.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a><td>
+              <td><a href="../views/landingView.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a></td>
+              <td class="left delete"><a href='../views/editView.php?&genres=<?=$genres ?>'>[-]</a></td>
+              <td></td>
             </tr>
         <?php  } ?>
         </table>
@@ -34,7 +36,7 @@ function render($gArray, $rArray,$dArray)
           </tr>
           <?php foreach($rArray as $i => $reviews) {?>
             <tr>
-              <td class="left">&#8226; <?=$reviews ?></a><td>
+              <td class="left">&#8226; <?=$reviews ?></a></td>
               <td class="left date"><?=$dArray[$i] ?></td>
             </tr>
             <?php  } ?>
@@ -43,7 +45,8 @@ function render($gArray, $rArray,$dArray)
     </html>
 
     <style>
-      table, td, th {height: 25px; width: 250px; text-align: center;}
+      table, td, th { height: 25px; width: 250px; text-align: center;}
+      .delete {width: 10px;}
       .left {text-align: left;}
       .date {width: 500px;}
       th {font-size: 200%;}

@@ -30,6 +30,24 @@ class manageDB {
       return $gArray;
   }
 
+  function deleteGenre($genre) {
+
+    $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+    $sql = "SELECT id FROM genre WHERE genrename='$genre'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $id = $row['id'];
+    $sql1 = "DELETE FROM genre WHERE id = '$id'";
+
+    if (mysqli_query($conn, $sql)) {
+      //delete all reviews in that genre as well
+      $sql2 = "DELETE FROM reviews WHERE genreid ='$id'";
+      $result = mysqli_query($conn, $sql2);
+    }else {
+      echo 'Error: ' . mysqli_error($conn);
+    }
+  }
+
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
     $sql1 = "SELECT id FROM genre WHERE genrename='$genres'";
