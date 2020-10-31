@@ -32,22 +32,10 @@ class manageDB {
 
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-<<<<<<< HEAD
-
-    
-  $sql1 = "SELECT id FROM genre WHERE genrename='{$genres}'"; 
-
-    $result = mysqli_query($conn, $sql1);
-    $row = mysqli_fetch_assoc($result);
-   
-      $id = $row['id']; 
-      echo $id; 
-=======
     $sql1 = "SELECT id FROM genre WHERE genrename='$genres'";
 
     $result = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_assoc($result);
->>>>>>> 38259891edacff2d6fd22754c79e3a2004949372
 
       $id = $row['id'];
 
