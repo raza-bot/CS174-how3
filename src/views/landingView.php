@@ -3,7 +3,6 @@ class landingView {
 
 function render($gArray, $rArray,$dArray)
 {
-
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -53,7 +52,6 @@ function render($gArray, $rArray,$dArray)
       table.left {float: left}
       table.right {float: right}
     </style>
-
 <?php
   }
 }
