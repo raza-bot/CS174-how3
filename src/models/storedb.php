@@ -38,9 +38,9 @@ class manageDB {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $id = $row['id'];
-    $sql1 = "DELETE FROM genre WHERE id = '$id'";
+    $sql1 = "DELETE FROM genre WHERE id = '$id' ";
 
-    if (mysqli_query($conn, $sql)) {
+    if (mysqli_query($conn, $sql1)) {
       //delete all reviews in that genre as well
       $sql2 = "DELETE FROM reviews WHERE genreid ='$id'";
       $result = mysqli_query($conn, $sql2);
@@ -91,4 +91,3 @@ class manageDB {
       return $dArray;
   }
 }
-
