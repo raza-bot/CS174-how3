@@ -11,7 +11,7 @@ function render($gArray, $rArray,$dArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="../controllers/redirect.php">Movie Reviews</a></h1>
+        <h1><a href ="?&start=yes">Movie Reviews</a></h1>
         <br />
 
         <table class="left">
