@@ -20,7 +20,7 @@ class manageDB {
 
   function fetchGenres() {
       $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-      
+
       $gArray = array();
       $sql = 'SELECT genrename FROM genre ORDER BY genrename';
       $result = mysqli_query($conn, $sql);
@@ -68,6 +68,84 @@ class manageDB {
     }
   }
 
+  function deleteReview($genre,$title) {
+
+    $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genre'";
+    $result1 = mysqli_query($conn,$sql1);
+    $row = mysqli_fetch_assoc($result1);
+    $id = $row['id'];
+    $sql = "DELETE FROM reviews WHERE title ='$title' AND genreid='$id'";
+    $result = mysqli_query($conn, $sql);
+
+  }
+
+  function fetchSpecificReviewTitle($genre)
+  {
+    $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+    $rArray = array();
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genre'";
+    $result1 = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_assoc($result1);
+    $id = $row['id'];
+
+    $sql = "SELECT title , rdate FROM reviews WHERE genreid='$id' ORDER BY rdate DESC";
+    if(mysqli_query($conn, $sql))
+    {
+      $result = mysqli_query($conn, $sql);
+      while($a = mysqli_fetch_assoc($result))
+      {
+        $rArray[] = $a['title'];
+      }
+      return $rArray;
+    }
+    else
+    {
+      return $rArray;
+    }
+  }
+
+  function fetchSpecificReviewDate($genre)
+  {
+    $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+    $dArray = array();
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genre'";
+    $result1 = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_assoc($result1);
+    $id = $row['id'];
+    $sql = "SELECT title , rdate FROM reviews WHERE genreid='$id' ORDER BY rdate DESC";
+    if(mysqli_query($conn, $sql))
+    {
+      $result = mysqli_query($conn, $sql);
+      while($a = mysqli_fetch_assoc($result))
+      {
+        $dArray[] = $a['rdate'];
+      }
+      return $dArray;
+    }
+    else
+    {
+      return $dArray;
+    }
+  }
+
+  function fetchFullReview($genre, $title)
+  {
+    $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+    $rvArray = array();
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genre'";
+    $result1 = mysqli_query($conn, $sql1);
+    $row = mysqli_fetch_assoc($result1);
+    $id = $row['id'];
+    $sql = "SELECT review FROM reviews WHERE genreid='$id' AND title='$title' ";
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result))
+    {
+      $rvArray[] = $row['review'];
+    }
+    return $rvArray;
+  }
+
   function fetchReviewsTitle() {
       $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
       $rArray = array();
@@ -82,7 +160,7 @@ class manageDB {
   function fetchReviewsDate() {
       $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
       $dArray = array();
-      $sql = 'SELECT rdate FROM reviews ORDER BY rdate';
+      $sql = 'SELECT rdate FROM reviews ORDER BY rdate DESC';
       $result = mysqli_query($conn, $sql);
       while($row = mysqli_fetch_assoc($result))
       {
@@ -90,19 +168,4 @@ class manageDB {
       }
       return $dArray;
   }
-
-   function fetchReviews() {
-      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-      
-      $rvArray = array();
-      $sql = 'SELECT review FROM reviews ORDER BY rdate';
-      $result = mysqli_query($conn, $sql);
-      while($row = mysqli_fetch_assoc($result))
-      {
-      $rvArray[] = $row['review'];
-      }
-      return $rvArray;
-  }
-
-
 }

@@ -19,7 +19,7 @@ function render($gArray, $rArray,$dArray)
             <th>Genres</th>
           </tr>
           <tr>
-            <td><a href='./src/views/addGenre.html'>&#8226; [New Genres]</a></td>
+            <td><a href='?&newGenre'>&#8226; [New Genres]</a></td>
           </tr>
           <?php foreach($gArray as $genres) {?>
             <tr>

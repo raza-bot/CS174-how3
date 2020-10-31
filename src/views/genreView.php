@@ -1,7 +1,7 @@
 <?php
 class genreView {
 
-function render($gArray, $rArray,$dArray, $genre, $rvArray)
+function render($gArray, $rArray,$dArray, $genre)
 {
     ?>
     <!DOCTYPE html>
@@ -11,7 +11,8 @@ function render($gArray, $rArray,$dArray, $genre, $rvArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="?start=yes">Movie Reviews/<?=$genre ?></a></h1>
+        <h1 style="display:inline;"><a href ="?start=yes">Movie Reviews/</a></h1>
+        <h1 style ="display:inline;"><a href="?&genrePage=<?=$genre ?>"><?=$genre ?></a></h1>
         <br />
 
         <table class="left">
@@ -33,7 +34,8 @@ function render($gArray, $rArray,$dArray, $genre, $rvArray)
           </tr>
           <?php foreach($rArray as $i => $title) {?>
             <tr>
-              <td class="left"><a href='page.php?title=<?=urldecode($title)?>&review=<?=urldecode($rvArray[$i])?>'>&#8226; <?=$title ?></a><td>
+              <td class="left"><a href='?&reviewTitle=<?=$title?>&itsGenre=<?=$genre?>'>&#8226; <?=$title ?></a><td>
+              <td class="left"><a href='?&deleteReview=<?=$title ?>&current=<?=$genre?>'>[-]</a></td>
               <td class="left date"><?=$dArray[$i] ?></td>
             </tr>
             <?php  } ?>
@@ -42,7 +44,7 @@ function render($gArray, $rArray,$dArray, $genre, $rvArray)
     </html>
 
     <style>
-      table, td, th {height: 25px; width: 250px; text-align: center;}
+      table, td, th {height: 25px; width: 300px; text-align: center;}
       .left {text-align: left;}
       .date {width: 500px;}
       th {font-size: 200%;}
