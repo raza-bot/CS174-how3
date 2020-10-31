@@ -1,8 +1,9 @@
 <?php
 class genreView {
 
-function render($gArray, $rArray)
+function render($gArray, $rArray,$dArray)
 {
+
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -11,10 +12,7 @@ function render($gArray, $rArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="../views/landingView.php">Movie Reviews</a>
-            "/"
-            <a href ="../views/genreView.php"> what goes in here?   </a>
-        </h1>
+        <h1><a href ="../views/showLanding.php">Movie Reviews</a></h1>
         <br />
 
         <table class="left">
@@ -27,23 +25,27 @@ function render($gArray, $rArray)
             </tr>
         <?php  } ?>
         </table>
-        
         <table>
           <tr>
             <th>Reviews</th>
           </tr>
           <tr>
-            <td><a href='../views/reviewForm.html'>&#8226; [Add Review]</a></td>
+            <td><a href='./src/views/reviewsForm.html'>&#8226; [New Review]</a></td>
           </tr>
-          <tr>
-            <td>&#8226; to be added</td>
-          </tr>
+          <?php foreach($rArray as $i => $reviews) {?>
+            <tr>
+              <td class="left">&#8226; <?=$reviews ?></a><td>
+              <td class="left date"><?=$dArray[$i] ?></td>
+            </tr>
+            <?php  } ?>
         </table>
       </body>
     </html>
 
     <style>
       table, td, th {height: 25px; width: 250px; text-align: center;}
+      .left {text-align: left;}
+      .date {width: 500px;}
       th {font-size: 200%;}
       table.left {float: left}
       table.right {float: right}

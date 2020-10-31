@@ -32,27 +32,44 @@ class manageDB {
 
   function insertReview($genres, $title, $review, $date) {
     $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
-    $sql1 = "SELECT id FROM genre WHERE genrename='Action'";
+    $sql1 = "SELECT id FROM genre WHERE genrename='$genres'";
 
     $result = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_assoc($result);
 
-      // while($row = mysqli_fetch_assoc($result))
-      // {
-        // echo "id is: " . $row['id'] . "  ";
-      // }
       $id = $row['id'];
-      echo $id;
 
     $sql = "INSERT INTO reviews VALUES($id,'$title', '$review', '$date')";
 
     if (mysqli_query($conn, $sql)) {
       // header('location: ../views/genreForm.html');
-      echo "Added to reivew";
       //fetch genres from
     }else {
       echo 'Error: ' . mysqli_error($conn);
     }
+  }
+
+  function fetchReviewsTitle() {
+      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      $rArray = array();
+      $sql = 'SELECT title , rdate FROM reviews ORDER BY rdate DESC';
+      $result = mysqli_query($conn, $sql);
+      while($row = mysqli_fetch_assoc($result))
+      {
+      $rArray[] = $row['title'];
+      }
+      return $rArray;
+  }
+  function fetchReviewsDate() {
+      $conn = mysqli_connect(db::servername .':' . db::port, db::user, db::password, 'Movie_reviews');
+      $dArray = array();
+      $sql = 'SELECT rdate FROM reviews ORDER BY rdate';
+      $result = mysqli_query($conn, $sql);
+      while($row = mysqli_fetch_assoc($result))
+      {
+      $dArray[] = $row['rdate'];
+      }
+      return $dArray;
   }
 }
 // echo $_REQUEST['genre'];
