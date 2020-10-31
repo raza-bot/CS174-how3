@@ -11,7 +11,7 @@ function render($gArray, $rArray,$dArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="../views/showLanding.php">Movie Reviews</a></h1>
+        <h1><a href ="../controllers/redirect.php">Movie Reviews</a></h1>
         <br />
 
         <table class="left">
@@ -23,8 +23,8 @@ function render($gArray, $rArray,$dArray)
           </tr>
           <?php foreach($gArray as $genres) {?>
             <tr>
-              <td><a href="./src/controllers/genrePage.php?&genres=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a></td>
-              <td class="left delete"><a href='../views/editView.php?&genres=<?=$genres ?>'>[-]</a></td>
+              <td><a href="?&genrePage=<?=urldecode($genres)?>"> &#8226; <?=$genres ?></a></td>
+              <td class="left delete"><a href='?&delete=<?=$genres ?>'>[-]</a></td>
               <td></td>
             </tr>
         <?php  } ?>
