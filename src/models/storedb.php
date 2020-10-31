@@ -90,4 +90,4 @@ class manageDB {
       return $dArray;
   }
 }
-// echo $_REQUEST['genre'];
+

@@ -1,9 +1,8 @@
 <?php
 class genreView {
 
-function render($gArray, $rArray,$dArray)
+function render($gArray, $rArray,$dArray, $genre)
 {
-
     ?>
     <!DOCTYPE html>
     <html lang="en" dir="ltr">
@@ -12,7 +11,7 @@ function render($gArray, $rArray,$dArray)
         <title>Movie Review</title>
       </head>
       <body>
-        <h1><a href ="../views/showLanding.php">Movie Reviews</a></h1>
+        <h1><a href ="../views/showLanding.php">Movie Reviews/<?=$genre ?></a></h1>
         <br />
 
         <table class="left">
@@ -50,7 +49,6 @@ function render($gArray, $rArray,$dArray)
       table.left {float: left}
       table.right {float: right}
     </style>
-
 <?php
   }
 }
